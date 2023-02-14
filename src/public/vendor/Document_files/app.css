@@ -1,0 +1,19 @@
+a {
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+.card-course-item {
+  margin-top: 15px; }
+
+.card-text {
+  height: 35px; }
+
+.img-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%; }
+
+.form-control-sm {
+  width: 160px;
+  margin: 0 8px; }

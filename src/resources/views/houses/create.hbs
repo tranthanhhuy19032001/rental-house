@@ -1,0 +1,166 @@
+<div class="container" style="width:70% ;">
+    <form method="POST" action="/houses/store" enctype="multipart/form-data">
+        <div class="access_page">
+            <div class="page_header">
+                <h5 style="font-size: 24px; margin-top: 10px;">Đăng tin cho thuê phòng trọ</h5>
+            </div>
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="address-room">
+                            <div class="address-room-title bg-primary p-2 text-white">
+                                <h6>ĐỊA CHỈ CHO THUÊ</h6>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <label for="">Tỉnh/Thành
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <select id="province" name="province" class="form-select" required>
+                                        <option value="">--TP--</option>
+                                        <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                        <option value="Hà Nội">Hà Nội</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <label for="district">
+                                        Quận<span class="text-danger">*</span>
+                                    </label>
+                                    <select id="district" name="district" class="form-select" required>
+                                        <option value="">--Quận--</option>
+                                        <option value="Quận 1">Quận 1</option>
+                                        <option value="Quận 2">Quận 2</option>
+                                        <option value="Quận 3">Quận 3</option>
+                                        <option value="Quận 4">Quận 4</option>
+                                        <option value="Quận 5">Quận 5</option>
+                                        <option value="Quận 6">Quận 6</option>
+                                        <option value="Quận 7">Quận 7</option>
+                                        <option value="Quận 8">Quận 8</option>
+
+                                    </select>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <Label>Địa chỉ</Label>
+                                    <div>
+                                        <input type="text" name="address" id="address" class="input-post" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="information-room">
+                            <div class="information-room-title bg-primary p-2 text-white">
+                                <h6>THÔNG TIN CHO THUÊ</h6>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="">Tiêu đề tin
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="text" name="title" id="title" class="input-post" required>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <label for="typeRoom">Chuyên mục <span class="text-danger">*</span></label>
+                                    <select id="typeRoom" name="typeRoom" class="form-select" required>
+                                        <option value="Cho thuê phòng trọ">Cho thuê phòng trọ</option>
+                                        <option value="Cho thuê căn hộ">Cho thuê căn hộ</option>
+                                        <option value="Cho thuê nhà nguyên căn">Cho thuê nhà nguyên căn</option>
+                                        <option value="Tìm người ở ghép">Tìm người ở ghép</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <label for="area">Diện tích <span class="text-danger">*</span></label>
+                                    <input type="number" name="area" id="area" class="input-post" required>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <label for="money">Giá cho thuê<span class="text-danger">*</span></label>
+                                    <input step="any" name="money" id="money" placeholder="VD: 2 triệu thì nhập 2"
+                                        class="input-post" required>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <label for="">Đơn vị giá<span class="text-danger">*</span></label>
+                                    <label for=""
+                                        style="display: block;width: 100%; padding-top: 10px; background-color: beige;">Triệu/tháng</label>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <label for="description">Nội dung <span class="text-danger">*</span></label>
+                                    <textarea name="description" id="description" cols="30" rows="10"
+                                        class="input-post"></textarea>
+                                </div>
+
+                                <div class="col-lg-6 col-md-12">
+                                    <label for="contactName">Tên liên hệ<span class="text-danger">*</span></label>
+                                    <input type="text" name="contactName" id="contactName" class="input-post ">
+                                </div>
+
+                                <div class="col-lg-6 col-md-12 ">
+                                    <label for="phone">Điện thoại<span class="text-danger ">*</span></label>
+                                    <input type="number" name="phone" id="phone" class="input-post">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="upload-image">
+                            <div class="upload-image-title bg-primary p-2 text-white">
+                                <h6>HÌNH ẢNH</h6>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="file-upload">
+                                        <div class="image-upload">
+                                            <input type="file" name="upFile" id="image" multiple>
+                                            <!-- <div class="upload-item" style="background:url('https://img.thuephongtro.com/images/thumb/2022/11/11/20221111193835-ugcrj.jpg')  no-repeat scroll 0% 0%; background-color:transparent; background-size:  95px 95px " rel="20221111193835-ugcrj.jpg">
+                                                <a href="javascript:void(0)" class="upload-item-delete" title="Xóa ảnh"><img src="/images/blank.gif"></a>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="help-block">
+                                            Tối đa 6 ảnh với tin thường và 16 ảnh với tin VIP. Dung lượng không quá
+                                            6MB<br> Thay đổi vị trí của ảnh bằng cách kéo ảnh vào vị trí mà bạn muốn.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 col-lg-4">
+                        <div class="guide-post">
+                            <div class="bg-primary p-2 text-white">
+                                HƯỚNG DẪN ĐĂNG TIN
+                            </div>
+                            <div class="guide-post-body">
+                                <ul>
+                                    <li><strong>Thông tin có dấu <span class="red_require">*</span> là bắt
+                                            buộc.</strong></li>
+                                    <li><strong>Nội dung phải viết bằng tiếng Việt có dấu</strong></li>
+                                    <li><strong>Tiêu đề tin không dài quá 100 kí tự</strong></li>
+                                    <li>Các bạn nên điền đầy đủ thông tin vào các mục để tin đăng có hiệu quả hơn.</li>
+                                    <li>Để tăng độ tin cậy và tin rao được nhiều người quan tâm hơn, hãy sửa vị trí tin
+                                        rao của bạn trên bản đồ bằng cách kéo icon tới đúng vị trí của tin rao.</li>
+                                    <li>Tin đăng có hình ảnh rõ ràng sẽ được xem và gọi gấp nhiều lần so với tin rao
+                                        không có ảnh. Hãy đăng ảnh để được giao dịch nhanh chóng!</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {{#if currentUser}}
+        <button type="submit" class="btn btn-success mb-2 p-2">Đăng tin</button>
+        {{/if}}
+    </form>
+</div>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)http://localhost:3000/me/stored/courses?_sort&column=name&type=desc -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="./Document_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="./Document_files/open-iconic-bootstrap.css">
+        <link rel="stylesheet" href="./Document_files/app.css">
+    </head>
+
+    <body>
+        <div class="app">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="http://localhost:3000/">Home</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="http://localhost:3000/me/stored/courses?_sort&amp;column=name&amp;type=desc#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="./Document_files/unnamed.jpg" alt="" class="img-avatar">
+                                    Thanh Huy
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="http://localhost:3000/courses/create">Đăng khóa học</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="http://localhost:3000/me/stored/courses">Khóa học của tôi</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="http://localhost:3000/">Đăng xuất</a></li>
+                                </ul>
+                            </li>
+            
+                        </ul>
+                    </div>
+                </div>
+            </nav>            <div class="container">
+                <form class="mt-4" name="container-form" method="POST" action="http://localhost:3000/courses/handle-form-action">
+    <a href="http://localhost:3000/me/trash/courses">Thùng rác (2)</a>
+    <h2>Khóa học của tôi</h2>
+    <div class="mt-4 d-flex align-items-center">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkboxAll">
+            <label class="form-check-label" for="checkboxAll">
+                Chọn tất cả
+            </label>
+        </div>
+        <select class="form-select form-control-sm text-center" name="action" required="">
+            <option value="">---Hành động---</option>
+            <option value="delete">Xóa</option>
+        </select>
+        <button id="btn-check-all-sumbit" class="btn btn-primary" disabled="">Thực hiện</button>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="col">#</th>
+                <th scope="col">
+                    Tên khóa học
+                    <a href="http://localhost:3000/me/stored/courses?_sort&amp;column=name&amp;type=desc">
+                        <span class="oi oi-sort-descending"></span>
+                    </a>
+                </th>
+                <th scope="col">Mô tả</th>
+                <th scope="col">Trình độ</th>
+                <th scope="col">Video Id</th>
+                <th scope="col">Thời gian tạo</th>
+                <th scope="col" colspan="2"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="courseIds[]" value="63e068c6c511c7dc01383fea" id="">
+                    </div>
+                </td>
+                <th scope="row">1</th>
+                <td>HTML CSS PRO</td>
+                <td>Học HTML CSS bước khởi đầu trở thành nhà phát triển web chuyên nghiệp</td>
+                <td>Nâng cao</td>
+                <td>R6plN3FvzFY</td>
+                <td></td>
+                <td>
+                    <a href="http://localhost:3000/courses/63e068c6c511c7dc01383fea/edit" class="btn btn-secondary">Sửa</a>
+                </td>
+                <td>
+                    <a href="http://localhost:3000/me/stored/courses?_sort&amp;column=name&amp;type=desc" class="btn btn-danger" data-id="63e068c6c511c7dc01383fea" data-bs-toggle="modal" data-bs-target="#delete-course-modal">Xóa</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="courseIds[]" value="63e0879dc511c7dc01383fed" id="">
+                    </div>
+                </td>
+                <th scope="row">2</th>
+                <td>Lập Trình JavaScript Cơ Bản</td>
+                <td>Học HTML CSS bước khởi đầu trở thành nhà phát triển web chuyên nghiệp.</td>
+                <td>Cơ bản</td>
+                <td>R6plN3FvzFY</td>
+                <td></td>
+                <td>
+                    <a href="http://localhost:3000/courses/63e0879dc511c7dc01383fed/edit" class="btn btn-secondary">Sửa</a>
+                </td>
+                <td>
+                    <a href="http://localhost:3000/me/stored/courses?_sort&amp;column=name&amp;type=desc" class="btn btn-danger" data-id="63e0879dc511c7dc01383fed" data-bs-toggle="modal" data-bs-target="#delete-course-modal">Xóa</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="courseIds[]" value="63e0880bc511c7dc01383fee" id="">
+                    </div>
+                </td>
+                <th scope="row">3</th>
+                <td>Lập Trình JavaScript Nâng Cao</td>
+                <td>Học HTML CSS bước khởi đầu trở thành nhà phát triển web chuyên nghiệp.</td>
+                <td>Cơ bản</td>
+                <td>R6plN3FvzFY</td>
+                <td></td>
+                <td>
+                    <a href="http://localhost:3000/courses/63e0880bc511c7dc01383fee/edit" class="btn btn-secondary">Sửa</a>
+                </td>
+                <td>
+                    <a href="http://localhost:3000/me/stored/courses?_sort&amp;column=name&amp;type=desc" class="btn btn-danger" data-id="63e0880bc511c7dc01383fee" data-bs-toggle="modal" data-bs-target="#delete-course-modal">Xóa</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="courseIds[]" value="63e08858c511c7dc01383fef" id="">
+                    </div>
+                </td>
+                <th scope="row">4</th>
+                <td>Xây Dựng Website với ReactJS</td>
+                <td>Học HTML CSS bước khởi đầu trở thành nhà phát triển web chuyên nghiệp.
+
+</td>
+                <td>Nâng cao</td>
+                <td>R6plN3FvzFY</td>
+                <td></td>
+                <td>
+                    <a href="http://localhost:3000/courses/63e08858c511c7dc01383fef/edit" class="btn btn-secondary">Sửa</a>
+                </td>
+                <td>
+                    <a href="http://localhost:3000/me/stored/courses?_sort&amp;column=name&amp;type=desc" class="btn btn-danger" data-id="63e08858c511c7dc01383fef" data-bs-toggle="modal" data-bs-target="#delete-course-modal">Xóa</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="courseIds[]" value="63e23fc7ebae5b9da78bec9c" id="">
+                    </div>
+                </td>
+                <th scope="row">5</th>
+                <td>Lập trình mobile với Dark</td>
+                <td>Lập trình mobile với Dark tại F8</td>
+                <td>Cơ bản</td>
+                <td>sQlQpKpQOpc</td>
+                <td>Tue Feb 07 2023 19:10:47 GMT+0700 (Giờ Đông Dương)</td>
+                <td>
+                    <a href="http://localhost:3000/courses/63e23fc7ebae5b9da78bec9c/edit" class="btn btn-secondary">Sửa</a>
+                </td>
+                <td>
+                    <a href="http://localhost:3000/me/stored/courses?_sort&amp;column=name&amp;type=desc" class="btn btn-danger" data-id="63e23fc7ebae5b9da78bec9c" data-bs-toggle="modal" data-bs-target="#delete-course-modal">Xóa</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="delete-course-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa khóa học</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Bạn chắc chắn xóa khóa học này?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button id="btn-delete-course" type="button" class="btn btn-danger">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form id="delete-form" method="POST"></form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteCourseModal = document.getElementById('delete-course-modal')
+        const btnDelteCourse = document.getElementById('btn-delete-course')
+        const containerForm = document.forms['container-form']
+        const deleteForm = document.getElementById('delete-form')
+        var deleteId;
+        const btnCheckboxAll = $('#checkboxAll')
+        const btnCourseItemCheckbox = $('input[name="courseIds[]"]')
+        const btnCheckAllSumbit = $('#btn-check-all-sumbit')
+
+        //When delete dialog btn clicked
+        deleteCourseModal.addEventListener('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            const btnDelete = event.relatedTarget
+            // Extract info from data-id attributes
+            deleteId = btnDelete.getAttribute('data-id')
+        })
+
+        //When delete btn clicked
+        btnDelteCourse.onclick = function () {
+            deleteForm.action = '/courses/' + deleteId + '?_method=DELETE'
+            deleteForm.submit()
+        }
+
+        //When checkboxAll btn changed
+        btnCheckboxAll.change(function () {
+            const isCheckedAll = $(this).prop('checked')
+            btnCourseItemCheckbox.prop('checked', isCheckedAll)
+            renderCheckALLSubmitBtn()
+
+        })
+
+        //btnCourseItemCheckbox changed
+        btnCourseItemCheckbox.change(function () {
+            const isCheckedAll = $('input[name="courseIds[]"]:checked').length === btnCourseItemCheckbox.length
+            btnCheckboxAll.prop('checked', isCheckedAll)
+            renderCheckALLSubmitBtn()
+        })
+
+        //Re-render check all submit btn
+        function renderCheckALLSubmitBtn() {
+            const isCheckedCount = $('input[name="courseIds[]"]:checked').length
+            if (isCheckedCount > 0) {
+                btnCheckAllSumbit.attr('disabled', false)
+            } else {
+                btnCheckAllSumbit.attr('disabled', true)
+            }
+        }
+    })
+
+</script>
+            </div>
+        </div>
+
+        <script src="./Document_files/bootstrap.bundle.min.js.download" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+            </script>
+        <script src="./Document_files/jquery.min.js.download"></script>
+    
+
+</body></html>

@@ -1,0 +1,72 @@
+<div class="thong-tin-user">
+    <div class="container" style="width: 70%; margin-top: 20px;">
+        <nav class="navbar navbar-expand-lg text-white-100" style="font-size:20px; padding: 0px; margin: 0px;">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item border-end bg-secondary me-2">
+                    <a id="btn-current-location" class="nav-link active" href="/me/stored/houses">Quản lý
+                        tin</a>
+                </li>
+
+                <li class="nav-item border-end bg-secondary">
+                    <a class="nav-link" href="/me/info">Thông tin tài khoản</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div>
+            <div class="pt-2">
+                <h5>Số lượng tin đã đăng ({{count}})</h3>
+            </div>
+        </div>
+
+        <DIV class="quan-ly-tin-user">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Loại tin</th>
+                        <th scope="col">Tiêu đề</th>
+                        <th scope="col">Diện tích (m²)</th>
+                        <th scope="col">Giá (Triệu/tháng)</th>
+                        <th scope="col">Thời gian đăng</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each houses}}
+                    <tr>
+                        <th scope="row">{{sum @index 1}}</th>
+                        <td>{{this.typeRoom}}</td>
+                        <td>{{this.title}}</td>
+                        <td>{{this.area}}</td>
+                        <td>{{this.money}}</td>
+                        <td class="createdAt">{{this.createdAt}}</td>
+                        <td style="width: 150px;">
+                            <a href="/houses/{{this.slug}}">
+                                <button class="btn text-success" id="">Xem chi tiết</button>
+                            </a>
+                            <a href="/houses/{{this._id}}/edit">
+                                <button class="btn text-danger" id="">Sửa</button>
+                            </a>
+                        </td>
+                    </tr>
+                    {{else}}
+                    <td colspan="7" class="text-center fs-5">
+                        Bạn chưa đăng tin cho thuê nhà nào.
+                        <a href="/houses/create">Đăng tin</a>
+                    </td>
+                    {{/each}}
+                </tbody>
+            </table>
+        </DIV>
+
+    </div>
+</div>
+<script>
+    const createdAt = document.getElementsByClassName('createdAt')
+    const createdAtLength = createdAt.length
+    for (let i = 0; i < createdAtLength; i++) {
+        var temp = createdAt[i].innerText.split(' GMT+0700 ')
+        createdAt[i].innerText = temp[0]
+    }
+</script>

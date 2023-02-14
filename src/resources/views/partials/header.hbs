@@ -1,0 +1,109 @@
+<div class="bg-header">
+    <div class="container" style="width:70%;">
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="/">
+                    <img src="http://localhost:3000/img/logo.png" alt="" />
+                </a>
+            </div>
+            {{#if currentUser}}
+            <div class="col-lg-6 d-flex align-items-center justify-content-end ">
+                <div class="welcome-user">
+                    {{#with currentUser}}
+                    <p>Xin chào,
+                        <strong><a href="/user/information">{{this.fullname}}</a></strong>
+                    </p>
+                    {{/with}}
+                </div>
+
+                <div class="user-dropdown">
+                    <button class="btn text-light bg-danger dropdown-toggle" type="button" id="user-dropdown-id"
+                        data-bs-toggle="dropdown">Quản lý tài khoản</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" rel="nofollow" href="/me/info"><i class="fa fa-user"></i>
+                                Thông tin tài khoản</a></li>
+                        <li><a class="dropdown-item" rel="nofollow" href="/houses/create" title="Đăng tin"><i
+                                    class="fa fa-plus-circle" aria-hidden="true"></i>
+                                Đăng tin</a></li>
+                        <li><a class="dropdown-item" rel="nofollow" href="/me/stored/houses" title="Quản lý tin"><i
+                                    class="fa fa-list-alt" aria-hidden="true"></i>
+                                Quản lý tin đăng</a></li>
+                        <li role="separator" class="divider"></li>
+                        <a class="dropdown-item" rel="nofollow" href="/user/logout" title="Thoát"><i
+                                class="fa fa-sign-out" aria-hidden="true"></i> Thoát</a>
+                    </ul>
+                </div>
+            </div>
+            {{else}}
+            <div class="col-md-6 d-flex justify-content-end align-items-center">
+                <div style="margin-right:10px ;">
+                    <a class="btn btn-outline-primary" href="/dangky">
+                        <i class="fa fa-user"></i>
+                        Đăng ký
+                    </a>
+                </div>
+                <div>
+                    <a class="btn btn-outline-success" href="/dangnhap">
+                        <i class="fa fa-user"></i>
+                        Đăng nhập
+                    </a>
+                </div>
+            </div>
+            {{/if}}
+
+        </div>
+    </div>
+</div>
+<div class="hori bg-primary navbar  navbar-expand-lg ">
+    <div class="container" style="width:70%;">
+        <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <nav class="collapse navbar-collapse navbar navbar-expand-lg text-white-100"
+            style="font-size:20px; padding: 0px; margin: 0px;" id="navbarSupportedContent">
+            <ul id="navbar-nav" class="navbar-nav me-auto">
+                <li class="nav-item border-start border-end">
+                    <a class="nav-link" rel="nofollow" aria-current="page" data-id="home" href="/">Trang chủ</a>
+                </li>
+                <li class="nav-item border-end">
+                    <a class="nav-link" rel="nofollow" data-id="all-rental-rooms" href="/cho-thue-phong-tro">Cho
+                        thuê phòng trọ</a>
+                </li>
+                <li class="nav-item border-end">
+                    <a class="nav-link" href="#/cho-thue-can-ho">Cho thuê căn hộ</a>
+                </li>
+                <li class="nav-item border-end">
+                    <a class="nav-link" href="#/cho-thue-nha-nguyen-can">Nhà nguyên căn</a>
+                </li>
+                <li class="nav-item border-end">
+                    <a class="nav-link" href="#/tim-nguoi-o-ghep">Tìm ngưởi ở ghép</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/huongdan">Hướng dẫn</a>
+                </li>
+
+            </ul>
+            <div class="d-flex create">
+                <a class="btn" href="/houses/create">
+                    <i class="fa fa-pencil-square-o"></i>
+                    Đăng tin
+                </a>
+            </div>
+        </nav>
+    </div>
+
+</div>
+
+<script>
+    const currentLocation = location.href
+    const menuItem = document.querySelectorAll('.nav-link')
+    const navItem = document.querySelectorAll('.nav-item')
+    const menuLength = menuItem.length
+    for (let i = 0; i < menuLength; i++) {
+        if (menuItem[i].href === currentLocation) {
+            navItem[i].classList.add("active")
+        }
+    }
+</script>

@@ -1,0 +1,106 @@
+<div class="singup-signin">
+    <div class="container" style="width: 40%;">
+        <div class="path pt-2">
+            <ol>
+                <li class="">
+                    <a href="/">Trang chủ</a>
+                    <span class="p-2">></span>
+                </li>
+                <li>
+                    <a href="/dangnhap">Đăng nhập</a>
+                </li>
+            </ol>
+        </div>
+        <div class="mt-2">
+            {{#if succcessRegister}}
+            <div id="successRegister" hidden>
+                {{succcessRegister}}
+            </div>
+            {{/if}}
+            <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="/dangnhap" role="tab"
+                        aria-controls="pills-login" aria-selected="true">Login</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="/dangky" role="tab"
+                        aria-controls="pills-register" aria-selected="false">Register</a>
+                </li>
+            </ul>
+            <div class="">
+                <div class="main">
+                    <form action="/user/login" method="POST" class="form" id="form-2">
+                        <h4 class="heading">Account LOGIN Form</h4>
+                        <p>Let's learn JavaScript with LOGIN form</p>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                            <span class="form-message"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                            <span class="form-message"></span>
+                        </div>
+
+                        {{!-- <div class="form-group">
+                            <label for="password_confirmation">Confirm password</label>
+                            <input type="password" class="form-control" id="password_confirmation"
+                                name="password_confirmation">
+                            <span class="form-message"></span>
+                        </div> --}}
+
+                        <div class="form-group">
+                            <div class="d-flex">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="loginCheck" checked />
+                                <label class="form-check-label" for="loginCheck"> Remember me </label>
+                                <a class="ms-auto" href="#!">Forgot password?</a>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-login w-100 mt-3" id="btn-login">Login</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/validator.js"></script>
+<script>
+    Validator({
+        form: '#form-2',
+        formGroupSelector: '.form-group',
+        errorSelector: '.form-message',
+        rules: [
+            Validator.isEmail('#email', 'Vui lòng nhập email hợp lệ'),
+            Validator.isRequired('#password', 'Vui lòng nhập mật khẩu'),
+            Validator.isMinLength('#password', 6, 'Mật khẩu phải tối thiểu 6 kí tự'),
+            //Validator.isRequired('#password_confirmation', 'Vui lòng nhập mật khẩu'),
+            //Validator.isConfirmPassword('#password_confirmation', function () {
+            //   return document.querySelector('#form-2 #password').value;
+            //}, 'Mật khẩu xác thực không chính xác!'),
+
+        ],
+        onSubmit: function (data) {
+            //Call API 
+            //console.log(data);
+        }
+    })
+
+    const succcessRegister = document.getElementById('successRegister')
+    //console.log(succcessRegister.innerText)
+    if (succcessRegister) {
+        alert(succcessRegister.innerText)
+    }
+
+
+</script>
+
+<link rel="stylesheet" href="/css/style.css">
