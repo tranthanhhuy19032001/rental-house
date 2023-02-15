@@ -23,6 +23,12 @@ const createSendToken = (user, req, res, next) => {
     res.locals.user = user;
     // user.password = undefined;
     res.cookie('access_token', token, cookieOptions);
+
+    if (user.role === 'admin' && user.email === 'admin@gmail.com') {
+        // res.redirect('/cho-thue-phong-tro');
+        res.render('admin/admin');
+        return;
+    }
     res.redirect('/');
 };
 
@@ -32,7 +38,7 @@ class AuthController {
         // res.json(req.body);
         const { name, email, password, passwordConfirm } = req.body;
 
-        const emailEx = await User.findOne({ email });
+        // const emailEx = await User.findOne({ email });
 
         if (await User.findOne({ email })) {
             // return next(new Error('Email existed! Please enter difference email', 400));
@@ -45,7 +51,12 @@ class AuthController {
         if (await (req.body.password != req.body.password_confirmation)) {
             return next(new Error('Password is difference with Password Confirm', 401));
         }
-        const newUser = await User.create(req.body);
+        // const newUser = await User.create(req.body);
+        // User.create(req.body);
+        if (email === 'admin@gmail.com') {
+            req.body = { ...req.body, ...{ role: 'admin' } };
+        }
+        User.create(req.body);
         req.body.password = undefined;
         req.body.password_confirmation = undefined;
         req.flash('success', 'Tạo tài khoản của bạn đã được tạo thành công');

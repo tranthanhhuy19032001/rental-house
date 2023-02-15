@@ -449,11 +449,17 @@ h4 {
 .form-message {
   color: #f33a58; }
 
-#btn-current-location {
-  cursor: default; }
-
 .footer-decor {
   height: 35px;
   width: 100%;
   background-repeat: repeat-x;
   background: url(http://localhost:3000/img/footer_deco.png); }
+
+.detail-show-btn:hover {
+  text-decoration: underline;
+  font-size: 0.9rem;
+  font-weight: 500; }
+
+.form-control-sm {
+  width: 160px;
+  margin: 0 8px; }

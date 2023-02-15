@@ -116,6 +116,52 @@ class HouseController {
                 .catch(next);
         });
     }
+
+    //[DELETE] /houses/:id
+    destroy(req, res, next) {
+        House.delete({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
+    //[DELETE] /houses/:id/force
+    forceDestroy(req, res, next) {
+        House.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
+    //[PATCH] /houses/:id/restore
+    restore(req, res, next) {
+        // const currentUser = res.locals.user;
+        House.restore({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
+    }
+
+    //[POST] /courses//handle-form-action
+    handleFormAction(req, res, next) {
+        switch (req.body.action) {
+            case 'delete':
+                House.delete({ _id: { $in: req.body.houseIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            case 'restore':
+                House.restore({ _id: { $in: req.body.houseIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            case 'forceDelete':
+                House.deleteMany({ _id: { $in: req.body.houseIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+
+            default:
+                res.json({ Message: 'Action invalid' });
+        }
+    }
 }
 
 module.exports = new HouseController();

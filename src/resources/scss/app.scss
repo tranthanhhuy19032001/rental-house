@@ -458,7 +458,7 @@ h4 {
     padding-left: 10px;
 }
 
-#breadcrumb ol>li:after {
+#breadcrumb ol > li:after {
     content: '';
     font: normal normal normal 14px/1 FontAwesome;
     display: inline-block;
@@ -466,11 +466,11 @@ h4 {
     color: #888;
 }
 
-#breadcrumb ol>li {
+#breadcrumb ol > li {
     display: inline;
 }
 
-#breadcrumb ol>li:last-child::after {
+#breadcrumb ol > li:last-child::after {
     content: ' ';
 }
 
@@ -562,13 +562,23 @@ h4 {
     color: #f33a58;
 }
 
-#btn-current-location {
-    cursor: default;
-}
-
+// #btn-current-location {
+//     cursor: default;
+// }
 .footer-decor {
     height: 35px;
     width: 100%;
     background-repeat: repeat-x;
     background: url(http://localhost:3000/img/footer_deco.png);
+}
+
+.detail-show-btn:hover {
+    text-decoration: underline;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.form-control-sm {
+    width: 160px;
+    margin: 0 8px;
 }

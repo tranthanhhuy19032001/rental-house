@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
+const mongooseDelete = require('mongoose-delete');
 
-const houseSchema = mongoose.Schema(
+const houseSchema = new mongoose.Schema(
     {
         province: { type: String },
         district: { type: String },
@@ -16,6 +17,7 @@ const houseSchema = mongoose.Schema(
         image: { type: String },
         slug: { type: String, slug: 'title', unique: true },
         user: { type: mongoose.Schema.ObjectId, ref: 'User' },
+        deletedAt: { type: Date },
     },
     {
         timestamps: true,
@@ -24,6 +26,10 @@ const houseSchema = mongoose.Schema(
 
 //Add plugins
 mongoose.plugin(slug);
+houseSchema.plugin(mongooseDelete, {
+    deletedAt: true,
+    overrideMethods: 'all',
+});
 
 houseSchema.virtual('users', {
     ref: 'User',

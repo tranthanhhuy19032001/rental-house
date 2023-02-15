@@ -21,13 +21,35 @@ class MeController {
         const housesQuery = House.find({ user: currentUser._id });
         const countHouses = House.countDocuments({ user: currentUser._id });
 
-        Promise.all([housesQuery, countHouses]).then(([houses, count]) => {
+        Promise.all([housesQuery, countHouses, House.countDocumentsDeleted()]).then(([houses, count, deletedCount]) => {
             res.render('users/stored-houses', {
+                deletedCount,
                 houses: mutilpleMongooseToObject(houses),
-                currentUser: mongooseToObject(currentUser),
                 count,
+                currentUser: mongooseToObject(currentUser),
             });
         });
+    }
+
+    //[GET] /me/trash/houses
+    trashHouses(req, res, next) {
+        const currentUser = res.locals.user;
+        let houseDeletedQuery = House.findDeleted({});
+
+        // if (req.query.hasOwnProperty('_sort')) {
+        //     houseDeletedQuery.sort({
+        //         [req.query.column]: req.query.type,
+        //     });
+        // }
+
+        houseDeletedQuery
+            .then((houses) => {
+                res.render('users/trash-houses', {
+                    houses: mutilpleMongooseToObject(houses),
+                    currentUser: mongooseToObject(currentUser),
+                });
+            })
+            .catch(next);
     }
 }
 

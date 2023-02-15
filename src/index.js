@@ -34,6 +34,7 @@ app.use(
 
 app.use(cookieParser());
 
+// override with POST having ?_method=DELETE,PUT,PATCH
 app.use(methodOverride('_method'));
 
 //public

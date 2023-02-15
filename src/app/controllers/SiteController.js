@@ -7,6 +7,7 @@ class SiteController {
     //[GET] /
     index(req, res, next) {
         const currentUser = res.locals.user;
+
         House.find({})
             .then((houses) => {
                 res.render('home', {
@@ -15,6 +16,24 @@ class SiteController {
                 });
             })
             .catch(next);
+    }
+
+    //[GET] /admin
+    admin(req, res, next) {
+        const currentUser = res.locals.user;
+        let admin = currentUser.role;
+        if (admin === 'admin') {
+            // admin = '';
+            House.find({})
+                .then((houses) => {
+                    res.render('admin/admin', {
+                        houses: mutilpleMongooseToObject(houses),
+                        currentUser: mongooseToObject(currentUser),
+                        admin,
+                    });
+                })
+                .catch(next);
+        }
     }
 
     //[GET] /huongdan

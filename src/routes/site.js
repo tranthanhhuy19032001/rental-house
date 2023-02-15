@@ -11,6 +11,7 @@ router.get('/dangky', siteController.register);
 router.get('/dangnhap', siteController.login);
 router.get('/huongdan', authController.isLoggedIn, siteController.guide);
 router.get('/cho-thue-phong-tro', authController.isLoggedIn, houseController.showRentalAllHouses);
+router.get('/admin', authController.isLoggedIn, siteController.admin);
 router.get('/', authController.isLoggedIn, siteController.index);
 
 module.exports = router;

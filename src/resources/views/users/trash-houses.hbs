@@ -1,37 +1,37 @@
 <div class="thong-tin-user">
-    <div class="container" style="width: 70%; margin-top: 15px;">
-        <div id="breadcrumb" class="path pb-2">
+    <div class="container" style="width: 70%">
+        <div id="breadcrumb" class="path pb-2 pt-2">
             <ol>
                 <li class="">
                     <a href="/">Trang chủ</a>
 
                 </li>
+                {{#if currentUser}}
                 <li>
-                    <a href="#">Danh sách tin đã đăng</a>
+                    <a href="/me/stored/houses">Danh sách tin đã đăng</a>
+                </li>
+                {{/if}}
+                <li>
+                    <a href="#">Thùng rác</a>
 
                 </li>
             </ol>
         </div>
 
         <div>
-            <div class="pt-1">
-
-                <h5>
-                    Bài đăng của tôi ({{count}})
-                    {{#if deletedCount}}
-                    <a class="" href="/me/trash/houses">Thùng rác ({{deletedCount}})</a>
-                    {{/if}}
-                </h5>
+            <div class="pt-2">
+                <h5>Các bài đăng đã xóa</h3>
 
             </div>
         </div>
 
         <DIV class="quan-ly-tin-user">
             <form class="mt-4" name="container-form" method="POST" action="/houses/handle-form-action">
-                <div class="mt-4 d-flex">
-                    <select class="form-select form-control-sm" name="action" required>
-                        <option class="text-center" value="">---Hành động---</option>
-                        <option class="text-center" value="delete">Xóa</option>
+                <div class="mt-4 d-flex align-items-center">
+                    <select class="form-select form-control-sm text-center" name="action" required>
+                        <option value="">---Hành động---</option>
+                        <option value="restore">Khôi phục</option>
+                        <option value="forceDelete">Xóa vĩnh viễn</option>
                     </select>
                     <button id="btn-check-all-sumbit" class="btn btn-primary" disabled>Thực hiện</button>
                 </div>
@@ -62,20 +62,20 @@
                             <td>{{this.area}}</td>
                             <td>{{this.money}}</td>
                             <td class="createdAt">{{this.createdAt}}</td>
-                            <td style="width: 150px;">
-                                <a class="detail-show-btn" href="/houses/{{this._id}}/edit">
-                                    Sửa
+                            <td style="width: 180px;">
+                                <a class="detail-show-btn restore-btn" href="" data-id="{{this._id}}">
+                                    Khôi phục
                                 </a>
                                 <a class="detail-show-btn ps-2 text-danger" href="" data-id="{{this._id}}"
                                     data-bs-toggle="modal" data-bs-target="#delete-post-modal">
-                                    Xóa
+                                    Xóa vĩnh viển
                                 </a>
                             </td>
                         </tr>
                         {{else}}
                         <td colspan="7" class="text-center fs-5">
-                            Bạn chưa đăng tin cho thuê nhà nào.
-                            <a href="/houses/create">Đăng tin</a>
+                            Thùng rác rống
+                            <a href="/me/stored/houses">Danh sách tin đã đăng</a>
                         </td>
                         {{/each}}
                     </tbody>
@@ -95,7 +95,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Bạn chắc chắn xóa bài đăng này?
+                Bạn chắc chắn xóa bài đăng này? Hành động này sẽ không được khôi phục!
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
@@ -107,6 +107,8 @@
 
 {{!-- Delete hidden Form --}}
 <form id="delete-form" method="POST"></form>
+{{!-- Restore hidden Form --}}
+<form id="restore-form" method="POST"></form>
 
 <script>
     //Handler short posts time created
@@ -122,27 +124,33 @@
 
     //Handler delete houses
     document.addEventListener('DOMContentLoaded', function () {
+        const restoreBtn = $('.restore-btn')
+        const deleteBtn = $('#btn-delete-post')
         const deletePostModal = document.getElementById('delete-post-modal')
         const deleteForm = document.getElementById('delete-form')
-        const btnDeltePost = document.getElementById('btn-delete-post')
-        var deleteId;
+        const restoreForm = document.getElementById('restore-form')
+        var idDeleted;
         const allItemCheckboxBtn = $('#all-item-checkbox-btn')
         const itemCheckboxBtn = $('input[name="houseIds[]"]')
         const btnCheckAllSumbit = $('#btn-check-all-sumbit')
 
-        //When delete dialog btn clicked
-        deletePostModal.addEventListener('show.bs.modal', function (event) {
-            // Button that triggered the modal
-            const btnDelete = event.relatedTarget
-            // Extract info from data-id attributes
-            deleteId = btnDelete.getAttribute('data-id')
+
+        restoreBtn.click(function (e) {
+            e.preventDefault()
+            restoreForm.action = '/houses/' + $(restoreBtn).data('id') + '/restore?_method=PATCH'
+            restoreForm.submit()
         })
 
-        //When delete btn clicked
-        btnDeltePost.onclick = function () {
-            deleteForm.action = '/houses/' + deleteId + '?_method=DELETE'
+        deletePostModal.addEventListener('show.bs.modal', function (e) {
+            const deleteDialogBtn = e.relatedTarget
+            idDeleted = deleteDialogBtn.getAttribute('data-id')
+        })
+
+        deleteBtn.click(function (e) {
+            e.preventDefault()
+            deleteForm.action = '/houses/' + idDeleted + '/force?_method=DELETE'
             deleteForm.submit()
-        }
+        })
 
         //When allItemCheckboxBtn changed
         allItemCheckboxBtn.change(function () {
@@ -170,5 +178,54 @@
         }
 
 
+        /*const deletePostModal = document.getElementById('delete-post-modal')
+        const btnDeltePost = document.getElementById('btn-delete-post')
+        //const containerForm = document.forms['container-form']
+        const deleteForm = document.getElementById('delete-form')
+        var deleteId;*/
+        /*const btnCheckboxAll = $('#checkboxAll')
+        const btnCourseItemCheckbox = $('input[name="courseIds[]"]')
+        const btnCheckAllSumbit = $('#btn-check-all-sumbit')*/
+
+
+
+        //When delete dialog btn clicked
+        /*deletePostModal.addEventListener('show.bs.modal', function (event) {
+            // Button that triggered the modal
+            const btnDelete = event.relatedTarget
+            // Extract info from data-id attributes
+            deleteId = btnDelete.getAttribute('data-id')
+        })
+
+        //When delete btn clicked
+        btnDeltePost.onclick = function () {
+            deleteForm.action = '/houses/' + deleteId + '?_method=DELETE'
+            deleteForm.submit()
+        }*/
+        /*
+        //When checkboxAll btn changed
+        btnCheckboxAll.change(function () {
+            const isCheckedAll = $(this).prop('checked')
+            btnCourseItemCheckbox.prop('checked', isCheckedAll)
+            renderCheckALLSubmitBtn()
+
+        })
+
+        //btnCourseItemCheckbox changed
+        btnCourseItemCheckbox.change(function () {
+            const isCheckedAll = $('input[name="courseIds[]"]:checked').length === btnCourseItemCheckbox.length
+            btnCheckboxAll.prop('checked', isCheckedAll)
+            renderCheckALLSubmitBtn()
+        })
+
+        //Re-render check all submit btn
+        function renderCheckALLSubmitBtn() {
+            const isCheckedCount = $('input[name="courseIds[]"]:checked').length
+            if (isCheckedCount > 0) {
+                btnCheckAllSumbit.attr('disabled', false)
+            } else {
+                btnCheckAllSumbit.attr('disabled', true)
+            }
+        }*/
     })
 </script>
