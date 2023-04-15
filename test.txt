@@ -1,0 +1,9 @@
+[nodemon] 2.0.20
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,json,hbs
+[nodemon] starting `node --inspect src/index.js`
+Debugger listening on ws://127.0.0.1:9229/cf68d199-bb30-4950-86c4-1cc383a901c6
+For help, see: https://nodejs.org/en/docs/inspector
+Example app listening on port 3000
+Connect Failed!
